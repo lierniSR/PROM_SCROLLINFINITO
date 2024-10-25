@@ -36,8 +36,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initRecycledView() {
         listadoTareas.layoutManager = LinearLayoutManager(this)
-        adapter = TaskAdapter(tareas)
+        adapter = TaskAdapter(tareas) { deleteTask(it) }
         listadoTareas.adapter = adapter
+    }
+
+    private fun deleteTask(position:Int){
+        tareas.removeAt(position)
+        adapter.notifyDataSetChanged()
     }
 
     private fun initListeners() {

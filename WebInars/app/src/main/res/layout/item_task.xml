@@ -2,6 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_margin="4dp"
+    android:elevation="16dp"
     android:layout_height="70dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +26,7 @@
             tools:text="Hello" />
         <!--Esto es para poner el icono al lado del texto-->
         <ImageView
+            android:id="@+id/ivTaskDone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
