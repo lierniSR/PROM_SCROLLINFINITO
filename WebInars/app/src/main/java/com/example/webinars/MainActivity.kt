@@ -9,6 +9,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.webinars.TaskApplication.Companion.prefs
 
 class MainActivity : AppCompatActivity() {
     lateinit var example:String //Para que se inizialize mas tarde, pero si no se asigna ningun valor app da error
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         //test()
         //testSimp()
         initUi()
+        prefs
     }
     private fun initUi() {
         initView()
@@ -35,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initRecycledView() {
+        tareas = prefs.getTasks()
         listadoTareas.layoutManager = LinearLayoutManager(this)
         adapter = TaskAdapter(tareas) { deleteTask(it) }
         listadoTareas.adapter = adapter
@@ -43,6 +46,7 @@ class MainActivity : AppCompatActivity() {
     private fun deleteTask(position:Int){
         tareas.removeAt(position)
         adapter.notifyDataSetChanged()
+        prefs.saveTasks(tareas)
     }
 
     private fun initListeners() {
@@ -56,6 +60,7 @@ class MainActivity : AppCompatActivity() {
         tareas.add(tareaAniadir)
         adapter.notifyDataSetChanged()
         editTextTarea.setText("")
+        prefs.saveTasks(tareas)
     }
 
     private fun initView() {
