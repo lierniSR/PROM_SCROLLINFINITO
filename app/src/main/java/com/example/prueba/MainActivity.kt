@@ -84,6 +84,7 @@ class MainActivity : AppCompatActivity() {
         val tareaAAniadir = textoEdit.text.toString()
         tareas.add(tareaAAniadir)
         adapter.notifyDataSetChanged()
+        textoEdit.setText("")
     }
 
     /**
