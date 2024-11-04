@@ -10,6 +10,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.prueba.TareasAplicacion.Companion.prefs
 
 /**
  * App para añadir tareas con 3 mejoras: Añadir reloj
@@ -63,6 +64,7 @@ class MainActivity : AppCompatActivity() {
      * Este metodo hara que el RecyclerView se muestre bien
      */
     private fun initRecyclerView() {
+        tareas = prefs.recuperarTareas()
         recyclerTareas.layoutManager = LinearLayoutManager(this)
         adapter = AdapterTareas(tareas, {eliminarTarea(it)})
         recyclerTareas.adapter = adapter
@@ -76,6 +78,7 @@ class MainActivity : AppCompatActivity() {
     private fun eliminarTarea(posicion:Int){
         tareas.removeAt(posicion)
         adapter.notifyDataSetChanged()
+        prefs.guardarTareas(tareas)
     }
     /**
      * Metodo para crear los listener
@@ -94,6 +97,7 @@ class MainActivity : AppCompatActivity() {
         tareas.add(tareaAAniadir)
         adapter.notifyDataSetChanged()
         textoEdit.setText("")
+        prefs.guardarTareas(tareas)
     }
 
     /**
