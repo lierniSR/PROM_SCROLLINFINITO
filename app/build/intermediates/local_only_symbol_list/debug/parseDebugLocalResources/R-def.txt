@@ -8,6 +8,7 @@ drawable ic_launcher_background
 drawable ic_launcher_foreground
 id button
 id buttonTareaAdd
+id imagenBorrar
 id main
 id recyclerTareas
 id textViewTarea

@@ -64,10 +64,19 @@ class MainActivity : AppCompatActivity() {
      */
     private fun initRecyclerView() {
         recyclerTareas.layoutManager = LinearLayoutManager(this)
-        adapter = AdapterTareas(tareas)
+        adapter = AdapterTareas(tareas, {eliminarTarea(it)})
         recyclerTareas.adapter = adapter
     }
 
+    /**
+     * Funcion que elimina la tarea
+     *
+     * @param posicion
+     */
+    private fun eliminarTarea(posicion:Int){
+        tareas.removeAt(posicion)
+        adapter.notifyDataSetChanged()
+    }
     /**
      * Metodo para crear los listener
      */

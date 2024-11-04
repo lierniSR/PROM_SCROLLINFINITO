@@ -3321,6 +3321,7 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id imagenBorrar
 id immediateStop
 id included
 id indeterminate
